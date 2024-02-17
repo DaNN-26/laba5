@@ -14,8 +14,8 @@ public class Main {
         System.out.println("Введите число b: ");
         int b = input.nextInt();
         Math_Expression exp2 = new Math_Expression(a, b, 0);
-        result = exp2.SecondExpression();
-        System.out.printf("y = (%d + %d) / (%d - %d) = %d", a, b, a, b, result);
+        int y = 0;
+        exp2.SecondExpression();
         System.out.println();
 
         System.out.println("Введите число a: ");
@@ -25,8 +25,7 @@ public class Main {
         System.out.println("Введите число b: ");
         b = input.nextInt();
         Math_Expression exp3 = new Math_Expression(a, b, x);
-        long long_result = exp3.ThirstExpression();
-        System.out.printf("y = (%d * %d / %d )! = %d", a, x, b, long_result);
+        exp3.ThirstExpression();
         System.out.println();
     }
 }
@@ -46,19 +45,31 @@ class Math_Expression
         int y = 3 * x + 5;
         return y;
     }
-    public int SecondExpression()
+    public void SecondExpression()
     {
-        int y = (a + b) / (a - b);
-        return y;
-    }
-    public long ThirstExpression()
-    {
-        int y = a * x / b;
-        long n = 1;
-        for (int i = 1; i <= y; i++)
+        if (a - b != 0)
         {
-            n = n * i;
+            int y = (a + b) / (a - b);
+            System.out.printf("y = (%d + %d) / (%d - %d) = %d", a, b, a, b, y);
         }
-        return n;
+        else
+        {
+            System.out.println("Ошибка! Деление на ноль невозможно!");
+        }
+    }
+    public void ThirstExpression()
+    {
+        if (b != 0) {
+            int y = a * x / b;
+            long n = 1;
+            for (int i = 1; i <= y; i++)
+            {
+                n = n * i;
+            }
+            System.out.printf("y = (%d * %d / %d )! = %d", a, x, b, n);
+        }
+        else {
+            System.out.println("Ошибка! Деление на ноль невозможно!");
+        }
     }
 }
